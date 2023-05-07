@@ -4,6 +4,10 @@ input=sys.stdin.readline
 
 n=int(input())
 k=int(input())
+if k>=n:
+    print(0)
+    sys.exit()
+
 s_list=list(map(int,input().split(" ")))
 dis=[]
 
