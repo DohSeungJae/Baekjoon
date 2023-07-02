@@ -36,7 +36,6 @@ for _ in range(cut):
 
 avg=rnd(sum(d)/len(d))
 
-print(d)
 
 print(avg)
 

@@ -5,7 +5,6 @@ n=int(input())
 
 sugar=[-1,-1,-1,1,-1,1,2,-1]
 
-
 for _ in range(n-7):
     temp=[]
     for i in range(len(sugar)-1,2,-1):
@@ -16,20 +15,6 @@ for _ in range(n-7):
     sugar.append(min(temp))
 
 print(sugar[n])
-
-
-
-
-
-
-
-
-
-    
-
-
-
-                
 
 
 

@@ -15,6 +15,7 @@ for i in range(9):
         if(h_list[i]+h_list[j]==a and h_list[i]!=h_list[j]):
             e1=h_list[i] 
             e2=h_list[j]
+            break
             
 
 for h in h_list:
