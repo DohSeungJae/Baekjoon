@@ -6,10 +6,10 @@ a,b,c,d=map(int,input().split())
 
 v=a*k+b
 if(v!=c*k+d):
-    print("NO")
+    print("No")
     exit(0)
 else:
-    print("YES",v)
+    print("Yes",v)
 
 
 #연속인가?
