@@ -2,7 +2,6 @@ import sys
 input=sys.stdin.readline
 a=[]
 b=[]
-c=[]
 
 n,m=map(int,input().split())
 for _ in range(n):
@@ -21,10 +20,3 @@ for i in range(n):
         print(c,end=" ")
         
     print()
-
-
-
-
-
-
-    
