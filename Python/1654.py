@@ -7,7 +7,7 @@ l_list=[]
 for _ in range(n):
     l_list.append(int(input()))
 
-start=0
+start=1
 end=max(l_list)
 mid=0
 
