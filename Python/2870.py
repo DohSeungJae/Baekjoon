@@ -21,11 +21,10 @@ for _ in range(n):
         number=""
 
 
-
 res.sort()
 for i in res:
     print(i)
-    
+
 
 
 
