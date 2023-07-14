@@ -24,6 +24,7 @@ def dfs(v,matrix):
 def bfs(v,matrix):
     q=queue.Queue()
     q.put(v)
+    visited[v]=1
 
     while not q.empty():
         v=q.get()
