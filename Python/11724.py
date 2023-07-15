@@ -25,8 +25,7 @@ def bfs(matrix,v):
             if(matrix[v][i]==1 and i not in visited):
                 q.put(i)
                 visited.append(i)
-
-
+                
     return visited
 
 cnt=0
