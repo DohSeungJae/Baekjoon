@@ -48,9 +48,7 @@ for _ in range(t):
         if xy not in visit:
             cnt+=1
             visit+=bfs(matrix,xy)
-            print(visit)
-
-
+           
 
     print(cnt)
 
