@@ -14,8 +14,7 @@ for _ in range(n):
 
 for i in range(n):
     for j in range(m):
-        mat1[i][j]=mat1[i][j]+mat2[i][j]
-        print(mat1[i][j],end=" ")
+        print(mat1[i][j]+mat2[i][j],end=" ")
     
     print()
     
