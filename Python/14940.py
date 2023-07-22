@@ -1,7 +1,6 @@
 import sys
 from collections import deque
 input=sys.stdin.readline
-maxs=sys.maxsize
 
 def bfs(start):
     q=deque()
