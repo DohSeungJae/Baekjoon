@@ -27,17 +27,9 @@ def bfs(start):
                     if next=='P': cnt+=1
                     visited[nextY][nextX]=1
                     q.append([nextX,nextY])
-                else:
-                    continue
-
 
     return cnt
                 
-                
-
-    
-    
-
 n,m=map(int,input().split())
 
 graph=[["O"]*m for i in range(n)]
@@ -51,9 +43,6 @@ for y in range(n):
     for x in range(m):
         graph[y][x]=line[x]
         if(graph[y][x]=="I"): start=[x,y]
-
-
-
 
 cnt=bfs(start)
 
