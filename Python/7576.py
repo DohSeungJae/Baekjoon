@@ -37,10 +37,8 @@ def bfs(day):
                         graph[nextY][nextX]=1
                         day.append([nextX,nextY])
 
+        if day: cnt+=1
 
-        if day: 
-            cnt+=1
-    
     for y in range(n):
         for x in range(m):
             if(visited[y][x]==0 and graph[y][x]==0):
@@ -49,7 +47,6 @@ def bfs(day):
 
     return cnt
                     
-
 for y in range(n):
     temp=list(map(int,input().split()))
     if 0 in temp:
@@ -64,9 +61,7 @@ if(bool(isZero)==False):
     print(0)
     exit(0)
 
-
-cnt=bfs(starts)
-print(cnt)
+print(bfs(starts))
 
 
 
