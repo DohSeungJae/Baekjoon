@@ -1,5 +1,4 @@
 import sys
-import math
 input=sys.stdin.readline
 
 n=int(input())
@@ -10,14 +9,13 @@ if(n<5):
     exit(0)
 
 for i in range(5,n+1):
-    root=math.sqrt(i)
-    if(root==int(root)):
+    root=int(i**0.5)
+    if(root*root==i):
         sq.append(1)
     else:
         temp=[]
         maxSq=1
         while maxSq**2<=i:
-            
             cand=sq[maxSq**2]+sq[i-maxSq**2]
             temp.append(cand)
             maxSq+=1
@@ -25,7 +23,6 @@ for i in range(5,n+1):
         sq.append(min(temp))
 
 print(sq[n])
-
         
 ##Pypy3
 #Four Squares
