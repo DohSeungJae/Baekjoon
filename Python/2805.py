@@ -12,8 +12,7 @@ while start<=end:
     mid=(start+end)//2
     rest=0
     for w in w_list:
-        if(w>=mid):
-            rest+=w-mid
+        if(w>=mid): rest+=w-mid
 
     if rest>=m:
         start=mid+1
