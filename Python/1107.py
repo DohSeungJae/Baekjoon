@@ -24,3 +24,4 @@ for ch in range(1000001):
 
 res=min(abs(default-n),minChDiff+len(str(minCh)))
 print(res)
+#
