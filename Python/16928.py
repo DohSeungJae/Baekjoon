@@ -13,31 +13,20 @@ def bfs(board,cnts,start):
         for i in range(1,7):
             next=cur+i
 
-            if(next>100):
+            if(next>100 or cnts[next]):
                 continue
 
-            if(board[next]!=0):
-                if(cnts[board[next]]==0):
-
+            cnts[next]=cnts[cur]+1
+            if(board[next]):
+                if not cnts[board[next]]:
                     cnts[board[next]]=cnts[next]
-                    cnts[next]=cnts[cur]+1
-                    q.append(next)
-                    q.append(board[next])
-                
-                else: #이미 방문했을 때
-                    cnts[next]=cnts[cur]+1
-                    
-                    
+                q.append(board[next])
+                continue
 
-                    
-            else:
-                if(cnts[next]==0):
-                    print(cur,next)
-                    
-                    cnts[next]=cnts[cur]+1
-                    q.append(next)
+                 
+            q.append(next)
 
-                               
+            
 n,m=map(int,input().split()) # n : 사다리, m : 뱀
 for _ in range(n+m):
     a,b=map(int,input().split())
@@ -46,8 +35,7 @@ for _ in range(n+m):
 
 bfs(board,cnts,1)
 
-print(cnts)
-print(board)
+print(cnts[100])
 
 
-
+#뱀/사다리를 만나면 무조건 이동
