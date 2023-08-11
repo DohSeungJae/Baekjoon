@@ -10,6 +10,7 @@ def backTracking():
         for i in range(m-1):
            if(not stack[i]<stack[i+1]):
                b=0
+               break
 
         if b: print(*stack)
         return 
