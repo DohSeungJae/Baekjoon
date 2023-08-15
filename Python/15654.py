@@ -24,5 +24,4 @@ def backTracking(start):
             visitDict[num]=0
 
 
-
 backTracking(n_list[0])
