@@ -6,13 +6,13 @@ visited=[0]*maxR
 
 
 def d(n):
-    return int((n*2)%maxR)
+    return (n*2)%maxR
 def s(n):
-    return int((n-1+maxR)%maxR)
+    return (n-1+maxR)%maxR
 def l(n):
     return (n*10)%maxR +n//1000
 def r(n):
-    return (n%10)*1000 + n//10
+    return (n%10)*1000+n//10
 
 
 fName_dict={d:"D",s:"S",l:"L",r:"R"}
