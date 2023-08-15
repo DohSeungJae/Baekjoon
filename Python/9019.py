@@ -2,8 +2,6 @@ import sys
 from collections import deque
 input=sys.stdin.readline
 maxR=10000
-visited=[0]*maxR
-
 
 def d(n):
     return (n*2)%maxR
@@ -13,7 +11,6 @@ def l(n):
     return (n*10)%maxR +n//1000
 def r(n):
     return (n%10)*1000+n//10
-
 
 fName_dict={d:"D",s:"S",l:"L",r:"R"}
 
@@ -36,7 +33,6 @@ def bfs(start,end):
 
         
     return cmd[end] 
-
 
 t=int(input())
 for _ in range(t):
