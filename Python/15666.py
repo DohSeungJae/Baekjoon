@@ -17,10 +17,8 @@ def backTracking(start):
         return 
      
     for i in range(start,n):
-        
         stack.append(n_list[i])
         backTracking(i)
         stack.pop()
-
 
 backTracking(0)
