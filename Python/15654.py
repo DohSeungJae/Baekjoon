@@ -9,7 +9,7 @@ visitDict={}
 for i in n_list:
     visitDict[i]=0
 
-def backTracking(start):
+def backTracking():
     if(len(stack)==m):
         print(*stack)
         return 
@@ -19,9 +19,8 @@ def backTracking(start):
         if visitDict[num]==0:
             visitDict[num]=1
             stack.append(num)
-            backTracking(num)
+            backTracking()
             stack.pop()
             visitDict[num]=0
 
-
-backTracking(n_list[0])
+backTracking()
