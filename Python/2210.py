@@ -20,10 +20,8 @@ def bfs(x,y,num):
         if(0<=nx<s and 0<=ny<s):
             bfs(nx,ny,num+board[ny][nx])
 
-
 for y in range(s):
     for x in range(s):
         bfs(x,y,board[y][x])    
 
-print(res)
 print(len(res))
