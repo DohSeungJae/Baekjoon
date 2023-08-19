@@ -2,7 +2,7 @@
 n,m=map(int,input().split())
 graph=[]
 for _ in range(n):
-    graph.append(list(input().strip()))
+    graph.append(list(input()))
 
 
 max_path=-1
