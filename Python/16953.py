@@ -13,14 +13,12 @@ while a<b:
     
     else:
         break
-    
-    
+  
     cnt+=1
-    print(b)
 
 if(a==b):
     print(cnt)
 else:
     print(-1)
 
-print(a,b)
+
