@@ -1,18 +1,14 @@
 import sys
 input=sys.stdin.readline
-max_cost=1000
 
 n=int(input())
-      
-res=[]
-
+cost_rgb=[[0,0,0]]
 for _ in range(n):
-    rgb=list(map(int,input().split()))      
-    res.append(rgb)
+    cost_rgb.append(list(map(int,input().split())))
 
-bFinish=False
-while not bFinish:
-    
+for i in range(1,n+1):
+    cost_rgb[i][0]+=min(cost_rgb[i-1][1],cost_rgb[i-1][2])
+    cost_rgb[i][1]+=min(cost_rgb[i-1][0],cost_rgb[i-1][2])
+    cost_rgb[i][2]+=min(cost_rgb[i-1][1],cost_rgb[i-1][0])
 
-
-
+print(min(cost_rgb[n]))
