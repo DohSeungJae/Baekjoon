@@ -1,22 +1,28 @@
-full_length,length=map(int,input().split())
-li=list(map(int,input().split()))
+import sys
+input=sys.stdin.readline
 
-start=sum(li[:length])
-max_val=start
-count=1
-for i in range(length,full_length):
-    start=start-li[i-length]+li[i]
-    if(max_val<start):
-        max_val=start
-        count=1
-    elif (max_val==start):
-        count+=1
-    else:
-        continue
+n,x=map(int,input().split())
+visitor=list(map(int,input().split()))
 
-if max_val==0:
+value=sum(visitor[:x])
+
+maxValue=value
+maxCnt=1
+
+for i in range(x,n):
+    value=value-visitor[i-x]+visitor[i]
+    if(value>maxValue):
+        maxValue=value
+        maxCnt=1
+
+    elif value == maxValue:
+        maxCnt+=1
+
+if(maxValue==0):
     print("SAD")
 else:
-    print(max_val)
-    print(count)
+    print(maxValue)
+    print(maxCnt)
+    
+    
     
