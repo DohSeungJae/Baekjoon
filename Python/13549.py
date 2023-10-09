@@ -34,13 +34,9 @@ def bfs(v):
                 else:
                     cnt[next]=min(cnt[next],cnt[v]+1)
 
-                q.append(next)
-                
-
-
+                #q.append(next)
 
 bfs(n)
 print(cnt[k])
-
 
 #숨바꼭질 3
