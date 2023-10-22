@@ -1,6 +1,7 @@
 from collections import defaultdict,deque
 import sys
 input=sys.stdin.readline
+sys.setrecursionlimit(10**6)
 
 class SCC:
     def __init__(self,vertex):
