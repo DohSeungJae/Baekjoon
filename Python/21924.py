@@ -27,11 +27,12 @@ while hq:
         cnt+=1
         for next in graph[node]:
             heapq.heappush(hq,next)
-
+            
 for i in range(1,N+1):
     if(visited[i]==False):
         print(-1)
         exit(0)
+        
 print(originalCost-savedCost)
 
 
