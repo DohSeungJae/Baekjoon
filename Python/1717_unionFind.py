@@ -1,10 +1,10 @@
 import sys
 input=sys.stdin.readline
-sys.setrecursionlimit(10**5)
+sys.setrecursionlimit(10**6)
 
 def findParent(parent,x):
     if(parent[x]!=x):
-        return findParent(parent,parent[x])
+        parent[x]=findParent(parent,parent[x])
     return parent[x]
 
 def unionParent(parent,a,b):
