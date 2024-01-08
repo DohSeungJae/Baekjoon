@@ -1,6 +1,6 @@
 import sys
 input=sys.stdin.readline
-sys.setrecursionlimit(10**5)
+sys.setrecursionlimit(10**6)
 
 def findParent(parent,x):
     if(parent[x]!=x):
@@ -17,8 +17,6 @@ def unionParent(parent,a,b):
 
 n,m=map(int,input().split())
 parent=[i for i in range(n+1)]
-for i in range(n+1):
-    parent[i]=i
 
 for _ in range(m):
     mode,a,b=map(int,input().split())
