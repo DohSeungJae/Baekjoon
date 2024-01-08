@@ -2,14 +2,20 @@ import sys
 input=sys.stdin.readline
 sys.setrecursionlimit(10**6)
 
-def findParent(parent,x):
+def findParent1(parent,x):
     if(parent[x]!=x):
-        parent[x]=findParent(parent,parent[x])
+        parent[x]=findParent1(parent,parent[x])
+    return parent[x]
+
+def findParentCompressed(parent,x):
+    if(parent[x]==x):
+        return x
+    parent[x]=findParentCompressed(parent,parent[x])
     return parent[x]
 
 def unionParent(parent,a,b):
-    a=findParent(parent,a)
-    b=findParent(parent,b)
+    a=findParentCompressed(parent,a)
+    b=findParentCompressed(parent,b)
     if(a<b):
         parent[b]=a
     else:
@@ -25,7 +31,7 @@ for _ in range(m):
     if(mode==0):
         unionParent(parent,a,b)
     else:
-        if(findParent(parent,a)==findParent(parent,b)):
+        if(findParentCompressed(parent,a)==findParentCompressed(parent,b)):
             print("YES")
         else:
             print("NO")
