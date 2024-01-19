@@ -24,10 +24,8 @@ cntOf2=len(cordinateOf2)
 cnt=0
 
 def remove2(start:int):
-    global cnt
     condition=cntOf2-len(stack)
     if(M==condition):
-        cnt+=1
         calculateDistance(stack)
         return 
     for i in range(start,len(cordinateOf2)):
