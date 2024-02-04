@@ -9,32 +9,21 @@ for _ in range(n-1):
     p,c,w=map(int,input().split())
     tree[p].append((c,w))
 
-stack=[0]
+maxDiameter=0 
+def backTracking(curNode:int,weight:int,lineWeight:int)->None:
+    global maxDiameter
+    if(tree[curNode]==[]):
+        return weight 
 
-def backTracking(curNode:int,weight:int)->None:
-    print(curNode)
-
-    diameter=0
-    if(tree[curNode]==[]): #이 조건문은 필요없는 것 같다
-        return weight #가중치를 return해서 상위 함수에서 합산하도록 처리
-    stack=[] #자식들의 가중치 값을 저장한 스택 
+    stack=[] 
     for child in tree[curNode]:
-        stack.append(backTracking(child[0],child[1]))
-        #상위 함수로 lineWeight를 반환해야함.
+        stack.append(backTracking(child[0],child[1],lineWeight))
     stack.sort(reverse=True)
+    lineWeight+=stack[0]
+    maxDiameter=max(maxDiameter,lineWeight)
     if(len(stack)>=2):
-        diameter=max(stack[0]+stack[1],stack[0]+weight)
-    if(diameter>stack[-1]):
-        stack.append(diameter)
-    return weight+stack[0]
+        maxDiameter=max(maxDiameter,stack[0]+stack[1])    
+    return lineWeight+weight
 
-
-backTracking(1,0)
-print(stack)
-
-
-#backTracking함수의 시작(루트)노드는 1
-#backTracking(1,0,0,[])
-
-
-    
+backTracking(1,0,0)
+print(maxDiameter)
