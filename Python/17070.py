@@ -1,7 +1,8 @@
 import sys
 input=sys.stdin.readline
 
-def dfs(cord1:list,curStatus:int)->None: ##dfs?? backTracking??
+cord1=[0,1]
+def dfs(cord1:list,curStatus:int)->None: 
     global cnt
     if(cord1==[N-1,N-1]):
         cnt+=1
@@ -39,7 +40,6 @@ def dfs(cord1:list,curStatus:int)->None: ##dfs?? backTracking??
         dfs([nextY,nextX],nextStatus)
 
 N=int(input())
-cord1=[0,1]
 
 status=0
 graph=[]
