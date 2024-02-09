@@ -3,10 +3,8 @@ input=sys.stdin.readline
 
 L=int(input())
 
-t=L/4
+t=L/5
 if(t==int(t)):
-    print(t)
+    print(int(t))
 else:
     print(int(t)+1)
-
-
