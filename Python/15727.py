@@ -8,5 +8,5 @@ if(t==int(t)):
     print(t)
 else:
     print(int(t)+1)
-    
-    
+
+
