@@ -1,7 +1,9 @@
 import sys
 from collections import deque
 input=sys.stdin.readline
-sys.setrecursionlimit(10**5)
+sys.setrecursionlimit(10**6)
+# 10**5일떈 Python3에서 RecursionError
+# 10**6일떈 Pypy3에서 메모리초과
 
 visited=[0]*100001
 minCost=[0]*100001
@@ -34,7 +36,15 @@ def printPath(cur:int)->None:
     printPath(vertexFrom[cur])
     print(cur,end=" ")
 
+def printPathStack(cur:int)->None:
+    stack=[]
+    while cur!=N:
+        stack.append(cur)
+        cur=vertexFrom[cur]
+    stack.append(N)
+    print(*stack[::-1])
 
 bfs(N)
 print(minCost[K])
-printPath(K)
+printPathStack(K)
+#printPath(K)
