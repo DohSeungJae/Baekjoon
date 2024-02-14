@@ -24,5 +24,9 @@ if(not len(stackTemp)):
     print("FRULA")
     exit(0)
 
+'''
 while stackTemp:
     print(stackTemp.pop(),end="")
+'''
+print(''.join(map(str,stackTemp[::-1])))
+      
