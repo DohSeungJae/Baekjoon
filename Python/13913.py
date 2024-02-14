@@ -4,6 +4,7 @@ input=sys.stdin.readline
 sys.setrecursionlimit(10**6)
 # 10**5일떈 Python3에서 RecursionError
 # 10**6일떈 Pypy3에서 메모리초과
+# printPathStack을 사용하는 경우에 당연히 재귀제한을 설정할 필요가 없음.
 
 visited=[0]*100001
 minCost=[0]*100001
