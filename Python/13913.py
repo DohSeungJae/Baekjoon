@@ -8,7 +8,7 @@ minCost=[0]*100001
 vertexFrom={}
 
 N,K=map(int,input().split())
-def bfs(v):
+def bfs(v:int)->None:
     q=deque()
     q.append(v)
     visited[v]=1
@@ -27,7 +27,7 @@ def bfs(v):
                 if(next not in vertexFrom.keys()):
                     vertexFrom[next]=v
 
-def printPath(cur:int):
+def printPath(cur:int)->None:
     if(cur==N):
         print(cur,end=" ")
         return 
