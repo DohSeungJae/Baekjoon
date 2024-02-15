@@ -20,7 +20,6 @@ for k in range(n):
             if(dist[i][k]+dist[k][j]<dist[i][j]):
                 dist[i][j]=dist[i][k]+dist[k][j]
 
-
 for row in dist:
     for i in row:
         if(i==sys.maxsize):
@@ -28,6 +27,6 @@ for row in dist:
         else:
             print(i,end=" ")
     print()
-    
+
 
 
