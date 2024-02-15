@@ -20,10 +20,10 @@ for i in range(N):
 
 maxScore=max(Adrian,Bruno,Goran)
 print(maxScore)
-if(Adrian-maxScore>=0):
+if(Adrian==maxScore):
     print("Adrian")
-if(Bruno-maxScore>=0):
+if(Bruno==maxScore):
     print("Bruno")
-if(Goran-maxScore>=0):
+if(Goran==maxScore):
     print("Goran")
 
