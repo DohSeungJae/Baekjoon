@@ -27,8 +27,8 @@ def bfs(v:int)->None:
                 visited[next]=1
                 minCost[next]=minCost[v]+1
                 q.append(next)
-                if(next not in vertexFrom.keys()):
-                    vertexFrom[next]=v
+                if(v not in vertexFrom.keys()):
+                    vertexFrom[v]=next
 
 def printPath(cur:int)->None:
     if(cur==N):
