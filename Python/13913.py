@@ -1,7 +1,7 @@
 import sys
 from collections import deque
 input=sys.stdin.readline
-sys.setrecursionlimit(10**6)
+sys.setrecursionlimit(10**5)
 # 10**5일떈 Python3에서 RecursionError
 # 10**6일떈 Pypy3에서 메모리초과
 # printPathStack을 사용하는 경우에 당연히 재귀제한을 설정할 필요가 없음.
@@ -27,8 +27,8 @@ def bfs(v:int)->None:
                 visited[next]=1
                 minCost[next]=minCost[v]+1
                 q.append(next)
-                if(v not in vertexFrom.keys()):
-                    vertexFrom[v]=next
+                if(next not in vertexFrom.keys()):
+                    vertexFrom[next]=v
 
 def printPath(cur:int)->None:
     if(cur==N):
