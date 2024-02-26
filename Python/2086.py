@@ -3,7 +3,6 @@ input=sys.stdin.readline
 LEN=2
 MOD=1000000000
 F=[[1,1],[1,0]]
-table={}
 
 def matrixMultiple(a:list,b:list)->list:
     res=[[0 for _ in range(LEN)] for _ in range(LEN)]
@@ -27,9 +26,5 @@ def matrixPower(a:list,b:int)->list:
 
 
 a,b=map(int,input().split())
-
-
-
-print(matrixPower(F,b+2)[0][1]-matrixPower(F,a+1)[0][1])
-print(matrixPower(F,b)[0][1])
+print((matrixPower(F,b+2)[0][1]-matrixPower(F,a+1)[0][1])%MOD)
 
