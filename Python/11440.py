@@ -1,6 +1,5 @@
 import sys
 input=sys.stdin.readline
-sys.setrecursionlimit(10**6)
 LEN=2
 MOD=1000000007
 F=[[1,1],[1,0]]
@@ -27,13 +26,6 @@ def matrixPower(a:list,b:int)->list:
 
 
 n=int(input())
-f=matrixPower(F,n-1)[0]
-fn=f[1]
-fn1=f[0]
+fn=matrixPower(F,n)[0]
 
-res=(fn*fn1)+(fn1)**2
-res=res%MOD
-print(res)
-
-
-
+print((fn[1]*fn[0])%MOD)
