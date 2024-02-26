@@ -25,9 +25,8 @@ def matrixPower(a:list,b:int)->list:
         returnValue= [[x%MOD for x in row] \
                 for row in matrixMultiple(a,matrixMultiple(temp,temp))]
         
-
     if((b) not in table.keys()):
-        table[b]=returnValue[0][0]
+        table[b]=returnValue[0][1]
     return returnValue
 
 
@@ -41,19 +40,8 @@ for n in range(end,start-1,-1):
         res+=1
     else:
         if(n in table.keys()):
-            print(n,":",table[n])
             res+=table[n]
         else:
-            print(n,":",matrixPower(F,n-1)[0][0])
             res+=matrixPower(F,n-1)[0][0]
 
-
 print(res)
-print(table)
-
-
-
-
-
-
-
