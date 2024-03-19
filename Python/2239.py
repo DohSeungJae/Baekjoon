@@ -7,7 +7,7 @@ class SudokuSolver:
         if(next_row==9 and next_col==9):
             return 
         
-        for i in range(1,9):
+        for i in range(1,9+1):
             self.__bt(next_row,next_col,i)
 
     def __check_row(self,row:int,num:int)->bool:
@@ -76,3 +76,4 @@ for row in board:
         print(x,end="")
     print()
 
+#참조 : https://colab.research.google.com/github/NoCodeProgram/CodingTest/blob/main/backTracking/solveSudoku.ipynb#scrollTo=Iq2FVfvsPj2R
