@@ -15,14 +15,12 @@ for _ in range(T):
         graph[X].append(Y)
         indegree[Y]+=1
 
-
     q=deque()
     for i in range(1,N+1):
         if(indegree[i]==0):
             q.append(i)
             dp[i]=timeOf[i]
             
-    
     while q:
         cur=q.popleft()
         for next in graph[cur]:
@@ -30,8 +28,7 @@ for _ in range(T):
             dp[next]=max(dp[cur]+timeOf[next],dp[next])
             if(indegree[next]==0):
                 q.append(next)
-
-
+                
     W=int(input())
     print(dp[W])
 
