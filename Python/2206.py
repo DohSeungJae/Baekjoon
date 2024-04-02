@@ -15,6 +15,7 @@ def bfs(start:list,visited:list)->None:
     while q:
         cur=q.popleft()
         y,x=cur[0],cur[1]
+        visited[y][x]=1
 
         for i in range(4):
             nextY=y+aroundY[i]
@@ -22,13 +23,13 @@ def bfs(start:list,visited:list)->None:
             if not(0<=nextX<M and 0<=nextY<N):
                 continue
             if(graph[nextY][nextX]==0 and visited[nextY][nextX]==0):
-                visited[nextY][nextX]+=1
+                distOf[nextY][nextX]=distOf[y][x]+1
                 q.append([nextY,nextX])
 
-    if(visited[N-1][M-1]==1):
+    if(distOf[N-1][M-1]==0):
         return sys.maxsize
     
-    return distOf[N-1][M-1]
+    return distOf[N-1][M-1]+1
 
 for y in range(N):
     line=input().strip()
