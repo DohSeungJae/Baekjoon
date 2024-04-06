@@ -40,7 +40,6 @@ def bfs(start:list[int,int,int])->int:
             
             q.append([nextY,nextX,nextW])
 
-
     if(sum(distOf[N-1][M-1])==0):
         return -1
     elif(distOf[N-1][M-1][0]>0 and distOf[N-1][M-1][1]>0):
@@ -48,9 +47,6 @@ def bfs(start:list[int,int,int])->int:
     else:
         return sum(distOf[N-1][M-1])
     
-    
-
-
 for _ in range(N):
     board.append([int(i) for i in input().strip()])
 
