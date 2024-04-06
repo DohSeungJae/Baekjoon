@@ -1,62 +1,63 @@
 import sys
 from collections import deque
 input=sys.stdin.readline
-minDist=sys.maxsize
 
 N,M=map(int,input().split())
-graph=[]
-walls=[]
+board=[]
+distOf=[[[0]*2 for _ in range(M)] for _ in range(N)]
 aroundX=[1,-1,0,0]
 aroundY=[0,0,1,-1]
 
-def bfs(start:list,visited:list)->None:
+def bfs(start:list[int,int,int])->int:
     q=deque()
     q.append(start)
+    distOf[start[0]][start[1]][0]=1
+    distOf[start[0]][start[1]][1]=1
+
     while q:
         cur=q.popleft()
-        y,x=cur[0],cur[1]
-        visited[y][x]=1
+        y,x,w=cur[0],cur[1],cur[2]
 
         for i in range(4):
             nextY=y+aroundY[i]
             nextX=x+aroundX[i]
-            if not(0<=nextX<M and 0<=nextY<N):
+            nextW=0
+            if(not(0<=nextY<N and 0<=nextX<M)):
                 continue
-            if(graph[nextY][nextX]==0 and visited[nextY][nextX]==0):
-                distOf[nextY][nextX]=distOf[y][x]+1
-                q.append([nextY,nextX])
 
-    if(distOf[N-1][M-1]==0):
-        return sys.maxsize
+            elif(board[nextY][nextX]==0):
+                if(distOf[y][x][1]>0 and w==1 and not y==x==0):
+                    nextW=1
+                if(distOf[nextY][nextX][nextW]!=0):
+                    continue
+                distOf[nextY][nextX][w]=distOf[y][x][w]+1
+            
+            elif(board[nextY][nextX]==1):
+                if(distOf[y][x][1]>0 and w==1 and not y==x==0):
+                    continue
+                distOf[nextY][nextX][1]=distOf[y][x][0]+1
+                nextW=1
+            
+            q.append([nextY,nextX,nextW])
+
+
+    if(sum(distOf[N-1][M-1])==0):
+        return -1
+    elif(distOf[N-1][M-1][0]>0 and distOf[N-1][M-1][1]>0):
+        return min(distOf[N-1][M-1])
+    else:
+        return sum(distOf[N-1][M-1])
     
-    return distOf[N-1][M-1]+1
-
-for y in range(N):
-    line=input().strip()
-    line=[int(i) for i in line]
-    for x in range(M):
-        if(line[x]==1):
-            walls.append([y,x])
-    graph.append(line)
-
-
-if not walls:
-    visited=[[0]*M for _ in range(N)]
-    distOf=[[0]*M for _ in range(N)]
-    minDist=min(bfs([0,0],visited),minDist)
-
-for wall in walls:
-    visited=[[0]*M for _ in range(N)]
-    distOf=[[0]*M for _ in range(N)]
     
-    graph[wall[0]][wall[1]]=0
-    minDist=min(bfs([0,0],visited),minDist)
-    graph[wall[0]][wall[1]]=1
 
+
+for _ in range(N):
+    board.append([int(i) for i in input().strip()])
+
+
+'''
 if(N==M==1):
-    minDist=1
-
-elif(minDist==sys.maxsize):
-    minDist=-1
-
-print(minDist)
+    print(1)
+    exit(0)
+'''
+print(bfs([0,0,0]))
