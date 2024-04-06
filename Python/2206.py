@@ -54,10 +54,4 @@ def bfs(start:list[int,int,int])->int:
 for _ in range(N):
     board.append([int(i) for i in input().strip()])
 
-
-'''
-if(N==M==1):
-    print(1)
-    exit(0)
-'''
 print(bfs([0,0,0]))
