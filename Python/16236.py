@@ -4,94 +4,64 @@ input=sys.stdin.readline
 
 N=int(input())
 board=[]
-loca=[]
-fishes=[]
-aroundY=[1,-1,0,0]
-aroundX=[0,0,-1,1]
+cur=[]
+dy=[1,-1,0,0]
+dx=[0,0,1,-1]
 
-def bfsFindTarget(eatables:list[int,int])->None:
-    global loca
-    target=[-1,-1]
-    distFromTarget=sys.maxsize
-
-    for targetFish in eatables:
-        sizeOfTarget=board[targetFish[0]][targetFish[1]]
-        if(sizeOfTarget==0):
-            continue
-        if(size<sizeOfTarget):
-            continue
-        
-        q=deque()
-        q.append(loca)
-        visited=[[0 for _ in range(N)] for _ in range(N)]
-        timeOf=[[0 for _ in range(N)] for _ in range(N)]
-        visited[loca[0]][loca[1]]=1
-
-        while q:
-            cur=q.popleft()
-            y,x=cur[0],cur[1]
-
-            for i in range(4):
-                nextY=y+aroundY[i]
-                nextX=x+aroundX[i]
-                if(not(0<=nextY<N and 0<=nextX<N)):
-                    continue
-                if(visited[nextY][nextX]==1):
-                    continue
-                if(board[nextY][nextX]>size):
-                    continue
-                timeOf[nextY][nextX]=timeOf[y][x]+1
-                if(targetFish==[nextY,nextX]):
-                    if(timeOf[nextY][nextX]<distFromTarget):
-                        distFromTarget=timeOf[nextY][nextX]
-                        target=[nextY,nextX]
-                else:
-                    visited[nextY][nextX]=1
-                    q.append([nextY,nextX])
-
-    if(target==[-1,-1]):
-        return target,-1
-    return target,distFromTarget
-
+def bfsFindTarget(cur:list[int,int])->list[int,int,int]:
+    global unitSize
+    visited=[[0 for _ in range(N)] for _ in range(N)]
+    timeOf=[[0 for _ in range(N)] for _ in range(N)]
+    eatables=[]
+    q=deque()
+    q.append([cur[0],cur[1]])
+    
+    while q:
+        y,x=q.popleft()
+        for i in range(4):
+            ny=y+dy[i]
+            nx=x+dx[i]
+            if(not(0<=ny<N and 0<=nx<N)): #붐위 안에 있는지 체크
+                continue
+            if(visited[ny][nx]==1): #방문 가능 여부1
+                continue
+            if(not(unitSize>=board[ny][nx])): #방문 가능 여부2
+                continue
+            visited[ny][nx]=1
+            q.append([ny,nx])
+            timeOf[ny][nx]=timeOf[y][x]+1
+            
+            if(unitSize>board[ny][nx] and board[ny][nx]!=0):
+                eatables.append([ny,nx,timeOf[ny][nx]])
+    
+    eatables.sort(key=lambda x:(x[2],x[0],x[1]))
+    return eatables
 
 for y in range(N):
     line=list(map(int,input().split()))
-    for x in range(N):
-        if(1<=line[x]<=6):
-            fishes.append([y,x]) #line[x]는 없어도 상관없음 
-        if(line[x]==9):
-            loca=[y,x]
-    
     board.append(line)
+    for x in range(N):
+        if(line[x]==9):
+            cur=[y,x]
+            board[y][x]=0
 
-targets=[]
-size=2
+unitSize=2
 exp=0
 time=0
 while 1:
-    for fish in fishes:
-        if(fish in targets):
-            continue
-        if(not(0<board[fish[0]][fish[1]]<size)):
-            continue
-        targets.append(fish)
-
-    target,distFromTarget=bfsFindTarget(targets)
-    print(target,distFromTarget)
-    if(distFromTarget==-1):
+    targets=bfsFindTarget(cur)
+    if(len(targets)==0):
+        print(time)
         break
-    
 
-    time+=distFromTarget
-    board[target[0]][target[1]]=0
-    loca=[target[0],target[1]]
-    
+    targetY,targetX,distFromTarget=targets[0]
     exp+=1
-    if(size==exp):
+    if(unitSize==exp):
         exp=0
-        size+=1
-        
+        unitSize+=1
 
-print(time)
+    board[targetY][targetX]=0
+    cur=[targetY,targetX]
+    time+=distFromTarget
 
 
