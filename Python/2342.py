@@ -36,5 +36,5 @@ for l in range(5):
         minCost=min(minCost,dp[len(commands)-1][l][r])
 
 print(minCost)
-print(dp[len(commands)-1])
+
 
