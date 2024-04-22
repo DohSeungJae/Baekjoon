@@ -2,15 +2,15 @@ import sys
 input=sys.stdin.readline
 
 def sieveOfEratos(n:int)->list[int]:
-    sieve=[True]*n
+    sieve=[1]*n
     m=int(n**0.5)
 
     for i in range(2,m+1):
-        if(sieve[i]==True):
+        if(sieve[i]):
             for j in range(2*i,n,i):
-                sieve[j]=False
+                sieve[j]=0
     
-    return [i for i in range(2,n) if (sieve[i]==True)]
+    return [i for i in range(2,n) if (sieve[i])]
 
 N=int(input())
 primeList=sieveOfEratos(N+1)
