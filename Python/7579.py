@@ -2,31 +2,21 @@ import sys
 input=sys.stdin.readline
 
 N,M=map(int,input().split())
-ms=list(map(int,input().split()))
-cs=list(map(int,input().split()))
-for i in range(N):
-    ms[i]=[ms[i],cs[i]]
-minCost=sys.maxsize
+ms=[0]+list(map(int,input().split()))
+cs=[0]+list(map(int,input().split()))
 
-stack=[]
-def bt(start:int)->None:
-    global minCost
-    sumM=0
-    sumC=0
-    for i in range(len(stack)):
-        sumM+=ms[i][0]
-        sumC+=ms[i][1]
-    if(sumM>=M):
-        minCost=min(minCost,sumC)
-        return 
+dp=[[0]*(sum(cs)+1) for _ in range(N+1)]
+res=sys.maxsize
 
-    for i in range(start,N):
-        if ms[i] not in stack:
-            stack.append(ms[i])
-            bt(i+1)
-            stack.pop()
-
-bt(0)
-print(minCost)
-
+for i in range(1,N+1):
+    for j in range(sum(cs)+1):
+        m,c=ms[i],cs[i]
+        if(j<c):
+            dp[i][j]=dp[i-1][j]
+        else:
+            dp[i][j]=max(dp[i-1][j],dp[i-1][j-c]+m)
         
+        if(dp[i][j]>=M):
+            res=min(res,j)
+            
+print(res)
