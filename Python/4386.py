@@ -20,6 +20,7 @@ for v in range(n):
         graph[v+1].append((cost,u+1))
         graph[u+1].append((cost,v+1))
       
+#MST, 최소 비용 계산
 ans=0
 cnt=0
 hq=[(0,1)]
