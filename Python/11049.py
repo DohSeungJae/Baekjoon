@@ -42,5 +42,5 @@ for y in range(1,N+1):
             dp[y][x]=dp[y][x-1]+operations
     dp[y][-1]=min(dp[y][-1],dp[y-1][-1])
 
-
-print(dp)
+        
+print(dp[-1][-1])
