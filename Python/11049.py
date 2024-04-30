@@ -8,11 +8,16 @@ mat=[]
 for _ in range(N):
     mat.append(list(map(int,input().split())))
 
-#대각선 처리 2중 for문
-for diagonal in range(1,N):
-    for d in range(0,N-diagonal):
+for i in range(N-1):
+    y,x=i,i+1
+    dp[y][x]=mat[x-1][0]*mat[y+1][0]*mat[y+1][1]
+
+for diagonal in range(2,N):
+    for d in range(N-diagonal):
         i,j=d,d+diagonal
-        dp[i][j]=min(dp[i][j-1]+mat[i][0]*mat[j][0]*mat[j][1],
-                     dp[i+1][j]+mat[j][1]*mat[i][1]*mat[i][0])
+        for distance in range(diagonal):
+            y=1+i+distance
+            x=y-1    
+            dp[i][j]=min(dp[i][j],(dp[i][x]+dp[y][j]+(mat[i][0]*mat[y][0]*mat[j][1])))
 
 print(dp[0][N-1])
