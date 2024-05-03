@@ -1,7 +1,5 @@
 import sys
 input=sys.stdin.readline
-rootTemp=-1
-rootCnt=0
 
 def findParent(parent:list[list[int]],x:int)->int:
     if(parent[x]!=x):
@@ -17,7 +15,6 @@ def unionParent(parent:list[list[int]],a:int,b:int)->None:
         parent[a]=b
 
 def dfs(y:int,x:int):
-    global rootTemp,rootCnt
     visited[y][x]=1
     dy,dx=directionOf[board[y][x]]
     nextY,nextX=y+dy,x+dx
@@ -25,9 +22,6 @@ def dfs(y:int,x:int):
     unionParent(parent,x+(y*M),nextX+(nextY*M))
     if(visited[nextY][nextX]):
         return
-    if(rootTemp!=findParent(parent,x+(y*M))):
-        rootCnt+=1
-        rootTemp=x+(y*M)
     dfs(nextY,nextX)
 
 N,M=map(int,input().split())
@@ -45,13 +39,13 @@ for y in range(N):
             continue
         dfs(y,x)
 
-'''
 isRoot={}
+rootCnt=0
 for i in range(len(parent)):
     if(i==parent[i] and i not in isRoot.keys()):
         isRoot[i]=1
         rootCnt+=1
-'''
+
 print(rootCnt)
 
 
