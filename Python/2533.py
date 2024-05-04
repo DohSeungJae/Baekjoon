@@ -22,7 +22,6 @@ def dfs(cur:int)->int:
         dp[cur]+=dp[next]
     if(not tree[cur]): #이어진 노드가 없는 상태 
         return 0
-    
     if(tree[cur] and not spreaded): #이어진 노드는 있지만 확산되지 않은 상태
         dp[cur]+=1
         return 1
