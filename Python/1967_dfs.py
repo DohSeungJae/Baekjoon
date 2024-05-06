@@ -1,6 +1,6 @@
 import sys
 input=sys.stdin.readline
-sys.setrecursionlimit(10**6)
+sys.setrecursionlimit(10**5)
 
 N=int(input())
 tree=[[] for _ in range(N+1)]
