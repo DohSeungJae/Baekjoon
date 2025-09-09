@@ -11,6 +11,8 @@ for _ in range(N):
     board.append(list(map(int,input().strip())))
 
 def dfs(y,x):
+    if(board[y][x]==1):
+        return False
     board[y][x]=1
     
     for i in range(4):
@@ -21,13 +23,15 @@ def dfs(y,x):
         if(board[next_y][next_x]==1): 
             continue 
         dfs(next_y,next_x)
+        
+    return True
 
 cnt=0
 for y in range(N):
     for x in range(M):
-        if(board[y][x]==1):
+        valid=dfs(y,x)
+        if(not valid):
             continue
-        dfs(y,x)
         cnt+=1
 
 print(cnt)
