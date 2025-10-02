@@ -28,10 +28,10 @@ def topology_sort():
         result.append(now)
         for nxt in graph[now]:
             indegree[nxt]-=1
-            prev_time[nxt]=max(prev_time[nxt],time[now])
+            prev_time[nxt]=max(prev_time[nxt],time[now]) #이 방식도 맞음
             if(indegree[nxt]==0):
                 q.append(nxt)
-                time[nxt]+=prev_time[nxt]
+                time[nxt]+=prev_time[nxt] #이 방식도 맞음
 
 topology_sort()
 
