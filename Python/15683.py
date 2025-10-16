@@ -17,6 +17,8 @@ def upd(y,x,d):
             break
         if(board2[y][x]==6):
             break
+        if(board2[y][x]!=0):
+            continue #이 코드 블럭은 정답에 영향이 없음
         board2[y][x]=7
 
 def init_board2():
@@ -50,8 +52,10 @@ for case in range(4**(len(cctv))): #cctv 방향이 최대 4개이기 때문
     brute=case
     for (y,x,model) in cctv:
 
+        #4진수에서 각 자리수 구하기
         d=brute%4
         brute=brute//4
+
         if(model==1):
             upd(y,x,d)
         elif(model==2):
