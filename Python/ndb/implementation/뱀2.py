@@ -13,7 +13,7 @@ def rotate_left(d):
     return 3 if(d==0) else (d-1)
 
 def can_go(ny,nx):
-    if(ny<1 or nx<1 or ny>n or nx>n):
+    if(ny<1 or nx<1 or ny>n or nx>n): #범위 설정에 주의
         return False
     if(board[ny][nx]==1):
         return False
@@ -42,20 +42,13 @@ for time in range(1,MAXTIME+1):
 
     if(not can_go(ny,nx)):
         print(time)
-        for line in board:
-            print(line)
-        print()
         break
     
-    print("time",time)
-
     snake.append((ny,nx))
     if(board[ny][nx]!=2):
         ly,lx=snake.popleft()
         board[ly][lx]=0
     board[ny][nx]=1
-
-
 
     if(rotate_when[time]=="L"):
         d=rotate_left(d)
