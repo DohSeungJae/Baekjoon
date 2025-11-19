@@ -5,7 +5,7 @@ dy=[0,0,1,-1]
 
 n,k=map(int,input().split())
 board=[]
-virus=[] #[[v,x,y] ...] 이때 n은 바이러스 번호
+virus=[] #[[v,x,y] ...] 이때 v는 바이러스 번호
 
 for y in range(n):
     line=list(map(int,input().split()))
